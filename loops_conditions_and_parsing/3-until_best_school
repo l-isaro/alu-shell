@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this script uses until to print text 10 times
+num=10
+until ((num == 0))
+do
+	echo "Best School"
+	((num--))
+done
