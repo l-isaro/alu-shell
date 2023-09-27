@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this script uses the while loop to print text 10 times
+num=10
+while ((num >0))
+do
+	echo "Best School"
+	((num--))
+done
