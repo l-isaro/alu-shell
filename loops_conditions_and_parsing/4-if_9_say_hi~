@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#this script will print text 10 times and hi at the 9th iteration
+num=0
+while ((num < 10))
+do
+	echo "Best School"
+	if ((num == 8 ))
+	   echo "Hi"
+	fi
+	((num ++))
+done
