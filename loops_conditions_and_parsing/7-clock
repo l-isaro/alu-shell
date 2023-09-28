@@ -3,7 +3,7 @@
 num=0
 while ((num <= 12))
 do
-    echo "Hour:$num"
+    echo "Hour: $num"
     number=1
     while ((number <= 59))
     do
