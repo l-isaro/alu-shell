@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#this script prints the contents of the current directory
+for file in $(ls -p | grep -v /)
+do
+	if [[ $file == *"-"* ]]
+	then
+		echo ${file#*-}
+	fi
+done
