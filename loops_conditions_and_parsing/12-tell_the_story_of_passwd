@@ -10,5 +10,5 @@ do
     homedir="${fields[5]}"
     shell="${fields[6]}"
     story="The user $username is part of the $groupid gang, lives in $homedir and rides $shell. $userid's place is protected by the passcode $password, more info about the user here: $info"
-	echo $"story"
+	echo "$story"
 done < /etc/passwd
