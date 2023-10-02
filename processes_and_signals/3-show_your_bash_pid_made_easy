@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #this script makes task 2 easier
-pgrep bash
+pgrep -l bash
