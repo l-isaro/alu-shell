@@ -1,0 +1,15 @@
+#!/bin/bash
+pgrep 4-to_infinity_and_beyond > /dev/null
+if [ $? -eq 0 ]
+then
+    echo "Process is running. Attempting to stop..."
+    pkill 4-to_infinity_and_beyond
+    if [ $? -eq 0 ]
+    then
+        echo "Process was successfully stopped."
+    else
+        echo "Failed to stop process. Please check your permissions."
+    fi
+else
+    echo "Process is not running."
+fi
