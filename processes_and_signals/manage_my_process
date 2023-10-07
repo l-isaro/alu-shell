@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#this script prints text indefinitely
+
+while true
+do
+	echo "I am alive!" >> /tmp/my_process
+	sleep 2
+done
