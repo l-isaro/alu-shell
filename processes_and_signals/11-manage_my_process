@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
-#for managing my_process
-DAEMON=/root/alu-shell/processes_and_signals/manage_my_process
-case "$1" in 
-	start)
-	echo "manage_my_process started"
-	start-stop-daemon --start --startas $DAEMON --background --pidfile /var/run/my_process.pid --make-pidfile
-	;;
-	stop)
-	start-stop-daemon --stop  --pidfile /var/run/my_process.pid --remove-pidfile
-	echo "manage_my_process stopped"
-	;;
-	restart)
-	start-stop-daemon --stop --pidfile /var/run/my_process.pid --remove-pidfile
-	start-stop-daemon --start --startas $DAEMON --background --pidfile /var/run/my_process.pid --make-pidfile  
-	echo "manage_my_process restarted"
-	;;
-	*)
-	echo "Usage: manage_my_process {start|stop|restart}">&2
-	exit 1
-	;;
-esac
+#Management of Bash
+if [[ "$#" == "1" ]]; then
+  if [[ "$1" == "start" ]]; then
+    ./manage_my_process &
+    echo "$!" > /var/run/my_process.pid
+    echo "manage_my_process started"
+  elif [[ "$1" == "stop" ]]; then
+    if test -f "/var/run/my_process.pid"; then
+      kill "$(cat /var/run/my_process.pid)"
+    fi
+    rm -f /var/run/my_process.pid
+    echo "manage_my_process stopped"
+  elif [[ "$1" == "restart" ]]; then
+    # stop program 
+    if test -f "/var/run/my_process.pid"; then
+      kill "$(cat /var/run/my_process.pid)"
+    fi
+    # start program
+    ./manage_my_process &
+    echo "$!" > /var/run/my_process.pid
+    echo "manage_my_process restarted"
+  else
+    echo "Usage: manage_my_process {start|stop|restart}"
+  fi
+else
+  echo "Usage: manage_my_process {start|stop|restart}"
+fi
